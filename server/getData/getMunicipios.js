@@ -18,13 +18,14 @@ module.exports = function getMunicipios() {
       bodyChunks.push(chunk);
     }).on('end', function () {
       var body = Buffer.concat(bodyChunks);
-      fs.writeFile("./municipios.json", body, function (err) {
+      fs.writeFile("./server/database/municipios.json", body, function (err) {
 
         if (err) {
           return console.log(err);
         }
 
         console.log("The file was saved!");
+        return body;
       });
 
     })
