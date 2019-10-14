@@ -6,50 +6,51 @@ const router = express.Router();
 
 // rota para buscar nomes dos municipios
 router.get('/municipios', async (req, res) => {
-    try {
-        // procura no banco de dados
-        const cidade = await Cidade.findOne({ municipio: 'adamantina' });
+  console.log("GET request on '/municipios'")
+  try {
+    const cidades = await Cidade.find();
 
-        // Se nao achar, chama o getData,
-        if (cidade == '') {
-            await getData.getMunicipios();
-            var municipios = require('../database/municipios.json')
+    if (cidades == '') {
+      await getData.getMunicipios();
+      await getData.atualizaMunicipios();
+      await getData.atualizaIegm();
 
-            for (mun in municipios) {
-                await Cidade.create({ municipio: mun.municipio, municipio_extenso: mun.municipio_extenso })
-            }
-            return res.status(200).send('atualizado')
-            return res.status(200).send(`<p>${JSON.stringify(municipios)}</p>`)
-        }
-        // depois salva no BD e devolve (?)
-        return res.send({ cidade });
-    } catch (err) {
-        return res.status(400).send(err)
+      return res.status(200).send('atualizado')
     }
+    
+    var resultado = [];
+    for (i in cidades) {
+      resultado = await resultado.concat([cidades[i]['municipio_extenso']])
+    }
+    return res.status(200).send( JSON.stringify(resultado) );
+  } catch (err) {
+    return res.status(400).send(`rota /municipios: ${err}`)
+  }
 });
 
+// Busca todos os dados de determinado municipio
+router.get('/municipio/:municipio', async (req, res) => {
+  try {
+    const cidade = await Cidade.find({ municipio: req.params.municipio });
+    if (cidade == '') {
+      return res.status(400).send('Essa cidade nao consta aqui, tente atualizar o BD ou verificar se digitou corretamente')
+    }
+    console.log(JSON.stringify(cidade[0]['iegm']))
+    return res.status(200).send( JSON.stringify(cidade[0]['iegm']) );
+  } catch (err) {
+    return res.status(400).send('rota: /municipios/:municipio', err)
+  }
+});
 
 // rota para buscar IEGM do municipio
 router.get('/iegm/:ano/:municipio', async (req, res) => {
-    try {
-        const cidade = await Cidade.findOne({ ...req.params.municipio });
-
-        //findOne().populate('iegm')
-        /*
-        const iegm = await "iegm".concat(req.params.ano)
-        // query database
-        const db = await client.db('deephack2019');
-        return res.send(test);
-        const result = await db.find({ 'a': req.params.municipio });
-        // return iegm
-        */
-        return res.send(cidade);
-    } catch (err) {
-        return res.status(400).send(err)
-    }
+  try {
+    const cidade = await Cidade.findOne({ ...req.params.municipio });
+    return res.send(cidade);
+  } catch (err) {
+    return res.status(400).send(err)
+  }
 });
-
-// rota para buscar despesas do municipio
 
 // rota para buscar saneamento do municipio
 
