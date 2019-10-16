@@ -3,15 +3,21 @@ const mongoose = require('../../database');
 const CidadeSchema = new mongoose.Schema({
   municipio: { type: String, require: true },
   municipio_extenso: { type: String, require: true },
-  cod_ibge: { type: Number, require: true },
+  cod_ibge: { type: String, require: true },
   iegm: [{
-    ano: Number,  
+    ano: Number,
     pergunta: { type: String, required: true },
     resposta: { type: String, required: true }
-    /*perguntas: [{
-      texto_pergunta: { type: String, require: true },
-      reposta: { type: String, require: true }
-    }],*/
+  }],
+  Residuos: [{
+    ano: Number,
+    pergunta: { type: String, required: true },
+    resposta: { type: String, required: true }
+  }],
+  Saneamento: [{
+    ano: Number,
+    pergunta: { type: String, required: true },
+    resposta: { type: String, required: true }
   }],
   buff: Buffer
 });
