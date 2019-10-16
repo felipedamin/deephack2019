@@ -17,12 +17,12 @@ router.get('/municipios', async (req, res) => {
 
       return res.status(200).send('atualizado')
     }
-    
+
     var resultado = [];
     for (i in cidades) {
       resultado = await resultado.concat([cidades[i]['municipio_extenso']])
     }
-    return res.status(200).send( JSON.stringify(resultado) );
+    return res.status(200).send(JSON.stringify(resultado));
   } catch (err) {
     return res.status(400).send(`rota /municipios: ${err}`)
   }
@@ -31,12 +31,18 @@ router.get('/municipios', async (req, res) => {
 // Busca todos os dados de determinado municipio
 router.get('/municipio/:municipio', async (req, res) => {
   try {
-    const cidade = await Cidade.find({ municipio: req.params.municipio });
+    const cidade = await Cidade.find({ municipio_extenso: req.params.municipio });
     if (cidade == '') {
       return res.status(400).send('Essa cidade nao consta aqui, tente atualizar o BD ou verificar se digitou corretamente')
     }
-    console.log(JSON.stringify(cidade[0]['iegm']))
-    return res.status(200).send( JSON.stringify(cidade[0]['iegm']) );
+    let iegm = cidade[0]['iegm']
+    let saneamento = cidade[0]['Saneamento']
+    let residuos = cidade[0]['Residuos']
+    console.log(saneamento)
+    let resultado = await JSON.stringify({ iegm, saneamento, residuos })
+    console.log(resultado)
+
+    return res.status(200).send(resultado);
   } catch (err) {
     return res.status(400).send('rota: /municipios/:municipio', err)
   }

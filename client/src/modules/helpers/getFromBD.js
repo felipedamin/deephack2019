@@ -8,13 +8,22 @@ async function getMunicipios() {
     }
 }
 
-async function getIegm(municipio) {
+async function getDadosMunicipio(municipio) {
     try {
-        const dados = await fetch(`http://localhost:3000/database/municipio/${municipio}`);
-        return await Promise.resolve(await dados.json())
+        let dados = await fetch(`http://localhost:3000/database/municipio/${municipio}`);
+        // console.log('get', link, 'FromBD:', await Promise.resolve(await dados.json()))
+        //dados = await Promise.resolve(await dados.json())
+        // console.log('dados', await Promise.resolve(dados.json()))
+        dados = await Promise.resolve(dados.json())
+
+        const iegm = await dados['iegm']
+        const saneamento = await dados['saneamento']
+        const residuos = await dados['residuos']
+
+        return await Promise.resolve({iegm, saneamento, residuos })
     } catch (error) {
         console.error('error, ', error);
     }
 }
 
-module.exports = { getMunicipios, getIegm }
+module.exports = { getMunicipios, getDadosMunicipio }

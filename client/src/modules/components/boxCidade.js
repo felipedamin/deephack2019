@@ -12,18 +12,39 @@ import { NavLink } from 'react-router-dom';
 
 import Graph from './graph'
 import { ODS12 } from '../../config/ods'
+import getFromBD from '../helpers/getFromBD'
 //eslint-disable-next-line
 import { Button } from '@material-ui/core';
 
+
 export class BoxCidade extends React.Component {
+  constructor(props) {
+    super(props)
+    this.cidade = this.props.cidade
+    this.state = {
+      iegm: '',
+      saneamento: '',
+      residuos: ''
+    }
+    this.getDadosMunicipio(this.cidade)
+  }
+
+  async getDadosMunicipio() {
+    const dados = await Promise.resolve(getFromBD.getDadosMunicipio(this.cidade))
+    let iegm = dados.iegm
+    let saneamento = dados.saneamento
+    let residuos = dados.residuos
+    
+    this.setState({ iegm, saneamento, residuos })
+  }
 
   render() {
     return (
       //#e3e3e3
-      <Card style={{ margin: 20, backgroundColor: '#b21635', fontFamily: 'Raleway'}}>
+      <Card style={{ margin: 20, backgroundColor: '#b21635', fontFamily: 'Raleway' }}>
         <CardContent style={{ fontFamily: 'Raleway', fontSize: '1em' }}>
           <p style={{ color: '#ffffff', fontSize: '1.3em', margin: '0.2em' }}>
-            {`${this.props.cidade}`}
+            {`Visão geral da cidade de ${this.props.cidade}`}
           </p>
         </CardContent>
         <CardActions>
@@ -39,6 +60,8 @@ export class BoxCidade extends React.Component {
                       <Grid column style={{ width: '100%' }}>
                         <h6>{item.texto}</h6>
                         <Graph width='100%'></Graph>
+                        <p>{ this.state.saneamento ? this.state.saneamento[0].pergunta : ''}</p>
+                        <div></div>
                       </Grid>
                     </ExpansionPanelDetails>
                   </ExpansionPanel>

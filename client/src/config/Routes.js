@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Home from '../modules/views/Home';
-// import { Home } from '../modules/Home';
+import Estado from '../modules/views/Estado';
 import LayoutHeader from '../modules/header'
 import LayoutFooter from '../modules/footer'
 
@@ -26,7 +26,7 @@ export class Routes extends React.Component {
         >
           <Switch>
             <Route path="/home" component={Home} />
-            <Route path="/status" component={Home} />
+            <Route path="/estado" component={Estado} />
             <Redirect from="/" to="/home" />
           </Switch>
         </Grid>

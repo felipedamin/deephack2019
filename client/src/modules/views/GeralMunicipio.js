@@ -11,10 +11,6 @@ import Switch from '@material-ui/core/Switch';
 import { BoxCidade } from '../components/boxCidade'
 
 export default class GeralMunicipio extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   handleCheckbox = (event) => {
     const checked = event.target.checked;
     this.setState({ [event.target.value]: checked });
@@ -28,7 +24,7 @@ export default class GeralMunicipio extends React.Component {
     return (
       <div>
         <BoxCidade
-          cidade={`Visão geral da cidade de ${this.props.cidade}`}
+          cidade={this.props.cidade}
         ></BoxCidade>
       </div>
     )

@@ -1,5 +1,4 @@
 const Cidade = require('../database/models/cidade');
-// const iegm = require('../database/models/iegm');
 
 const iegm2014 = require('../database/iegm2014.json');
 

@@ -13,7 +13,7 @@ async function atualizaMunicipios() {
           await new Cidade({
             municipio: municipios[mun].municipio,
             municipio_extenso: municipios[mun].municipio_extenso,
-            cod_ibge: index
+            cod_ibge: Object.keys(cods)[mun],
           }).save()
             .then(() => {
               salvos += 1;

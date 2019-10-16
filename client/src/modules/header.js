@@ -54,19 +54,14 @@ class LayoutHeader extends React.Component {
           <Grid container direction="row" justify="space-around" alignItems="center">
             <div style={{ width: '0em' }} />
             <div>|</div>
+            <NavLink to="/estado" >
+              <Button size="small">
+                Estado de SP </Button>
+            </NavLink>
+            <div>|</div>
             <NavLink to="/home" >
               <Button size="small">
                 Municípios </Button>
-            </NavLink>
-            <div>|</div>
-            <NavLink to="/home" >
-              <Button size="small">
-                ODS </Button>
-            </NavLink>
-            <div>|</div>
-            <NavLink to="/status">
-              <Button size="small">
-                Contato </Button>
             </NavLink>
             <div>|</div>
             <div style={{ width: '0em' }} />
