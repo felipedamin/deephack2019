@@ -19,31 +19,35 @@ anos = [2015,2016,2017]
 rdo_y = [data_2015.loc['Lagoinha', 'Resíduos']['Taxa coleta RDO'],
          data_2016.loc['Lagoinha', 'Resíduos']['Taxa coleta RDO'],
          data_2017.loc['Lagoinha', 'Resíduos']['Taxa coleta RDO']]
-tx_rdo = go.Scatter(x = anos, y = rdo_y, mode = 'lines')
+tx_rdo = go.Scatter(x = anos, y = rdo_y, mode = 'lines + markers')
 
-layout_rdo = go.Layout(title = 'Taxa de resíduos domésticos recolhidos por ano em Lagoinha', 
-                   yaxis={'title':'Taxa de RDO'},
+layout_rdo = go.Layout(title={'text': 'Taxa de cobertura de coleta de resíduos domésticos em relação à população total de Lagoinha', 
+                           'font':{'family': "Times New Roman", "size": 30 },
+                           'x': 0.5, 'y': 0.9}, 
+                   yaxis={'title':'População atendida/População total (%)'},
                    xaxis={'title': 'Anos', 'tickmode': 'linear', 'dtick':1})
                    #paper_bgcolor = '#ff7f0e'
                    #colorway = ('#d62728','#1f77b4'))
 
 fig1 = go.Figure(data = [tx_rdo], layout = layout_rdo)
-plot(fig1)
+#plot(fig1)
 
 #Massa coletada por cidade
 coletada_y = [data_2015.loc['Lagoinha', 'Resíduos']['Massa coletada'],
          data_2016.loc['Lagoinha', 'Resíduos']['Massa coletada'],
          data_2017.loc['Lagoinha', 'Resíduos']['Massa coletada']]
-m_coletada = go.Scatter(x = anos, y = coletada_y, mode = 'lines')
+m_coletada = go.Scatter(x = anos, y = coletada_y, mode = 'lines + markers')
 
-layout_coletada = go.Layout(title = 'Massa total recolhida por ano em Lagoinha', 
-                   yaxis={'title':'Massa'},
+layout_coletada = go.Layout(title={'text': 'Massa coletada de resíduos domésticos + resíduos públicos per capita em relação à população urbana de Lagoinha', 
+                           'font':{'family': "Times New Roman", "size": 25 },
+                           'x': 0.5, 'y': 0.9},
+                   yaxis={'title':'Quantidade total recolhida/ População urbana (kg/hab./dia)'},
                    xaxis={'title': 'Anos', 'tickmode': 'linear', 'dtick':1})
                    #paper_bgcolor = '#ff7f0e'
                    #colorway = ('#d62728','#1f77b4'))
 
 fig2 = go.Figure(data = [m_coletada], layout = layout_coletada)
-plot(fig2)
+#plot(fig2)
 
 #Taxa de recuperação de recicláveis
 
@@ -52,14 +56,16 @@ tx_recup_y = [data_2015.loc['Cotia', 'Resíduos']['Taxa de recuperação de reci
          data_2017.loc['Cotia', 'Resíduos']['Taxa de recuperação de recicláveis']]
 tx_recup = go.Scatter(x = anos, y = tx_recup_y, mode = 'lines+markers')
 
-layout_recup = go.Layout(title = 'Taxa de recuperação em Cotia', 
-                   yaxis={'title':'Taxa'},
+layout_recup = go.Layout(title={'text': 'Taxa de recuperação de materiais recicláveis em relação à quantidade total de resíduos coletados em Cotia', 
+                           'font':{'family': "Times New Roman", "size": 25 },
+                           'x': 0.5, 'y': 0.9}, 
+                   yaxis={'title':'Quantidade de recicláveis recuperados/Quantidade total (%)'},
                    xaxis={'title': 'Anos', 'tickmode': 'linear', 'dtick':1})
                    #paper_bgcolor = '#ff7f0e'
                    #colorway = ('#d62728','#1f77b4'))
 
 fig3 = go.Figure(data = [tx_recup], layout = layout_recup)
-plot(fig3)
+#plot(fig3)
 
 # Massa recolhida via seletiva  
 seletiva_y = [data_2015.loc['Cotia', 'Resíduos']['Massa recolhida via coleta seletiva'],
@@ -67,14 +73,16 @@ seletiva_y = [data_2015.loc['Cotia', 'Resíduos']['Massa recolhida via coleta se
          data_2017.loc['Cotia', 'Resíduos']['Massa recolhida via coleta seletiva']]
 m_seletiva = go.Bar(x = anos, y = seletiva_y)
 
-layout_selet = go.Layout(title = 'Massa recolhida via coleta seletiva em Cotia', 
-                   yaxis={'title':'massa'},
+layout_selet = go.Layout(title={'text': 'Massa per capita recolhida via coleta seletiva em Cotia', 
+                           'font':{'family': "Times New Roman", "size": 30 },
+                           'x': 0.5, 'y': 0.9},
+                   yaxis={'title':'Quantidade de recicláveis recolhidos/ Pop urbana (Kg/hab./ano)'},
                    xaxis={'title': 'Anos', 'tickmode': 'linear', 'dtick':1})
                    #paper_bgcolor = '#ff7f0e'
                    #colorway = ('#d62728','#1f77b4'))
 
 fig4 = go.Figure(data = [m_seletiva], layout = layout_selet)
-plot(fig4)
+#plot(fig4)
 
 #Taxa população atendida com coleta
 
@@ -83,11 +91,19 @@ tx_pop_aten_y = [data_2015.loc['Cotia', 'Resíduos']['Taxa pop atendida com cole
          data_2017.loc['Cotia', 'Resíduos']['Taxa pop atendida com coleta']]
 tx_pop = go.Scatter(x = anos, y = tx_pop_aten_y, mode = 'lines+markers')
 
-layout_pop = go.Layout(title = 'Taxa de população atendida com coleta em Cotia', 
-                   yaxis={'title':'Taxa'},
+layout_pop = go.Layout(title={'text': 'Taxa da população beneficiado pelo serviço de coleta de resíduos domiciliares em Cotia', 
+                           'font':{'family': "Times New Roman", "size": 30 },
+                           'x': 0.5, 'y': 0.9},
+                   yaxis={'title':'População atendida/ População total (%)'},
                    xaxis={'title': 'Anos', 'tickmode': 'linear', 'dtick':1})
                    #paper_bgcolor = '#ff7f0e'
                    #colorway = ('#d62728','#1f77b4'))
 
 fig5 = go.Figure(data = [tx_pop], layout = layout_pop)
-plot(fig5)
+#plot(fig5)
+
+fig1.write_image("C:/Users/icaro/Desktop/Hackaton/Dados tratados/Json/coleta_rdo.png", width = 1500, height = 700, scale = 2)
+fig2.write_image("C:/Users/icaro/Desktop/Hackaton/Dados tratados/Json/massa_coletada.png", width = 1500, height = 700, scale = 2)
+fig3.write_image("C:/Users/icaro/Desktop/Hackaton/Dados tratados/Json/recup_reciclaveis.png", width = 1000, height = 700, scale = 2)
+fig4.write_image("C:/Users/icaro/Desktop/Hackaton/Dados tratados/Json/massa_via_seletiva.png", width = 1500, height = 700, scale = 2)
+fig5.write_image("C:/Users/icaro/Desktop/Hackaton/Dados tratados/Json/pop_beneficiada.png", width = 1500, height = 700, scale = 2)
