@@ -1,24 +1,19 @@
 const Cidade = require('../database/models/cidade');
 
-const s_r2015 = require('../database/saneamentoResiduos/2015.json');
-const s_r2016 = require('../database/saneamentoResiduos/2016.json');
-const s_r2017 = require('../database/saneamentoResiduos/2017.json');
+const energiaCO2 = require('../database/energia_co2.json');
 
 // Os municipios ja devem estar no BD com seus respectivos codigos
 // Se nao estiverem, chamar a atualizaMunicipios
 // basta GET em {link}/database/municipios
 
-const ANOS = [2015, 2016, 2017]
-const S_Rs = [s_r2015, s_r2016, s_r2017]
-
 async function atualizaSaneamentoResiduos() {
   try {
-    for (let s_rDoAno of S_Rs) {
-      //Atualiza saneamento
-      for (index in s_rDoAno) {
-        let cidade = s_rDoAno[index]
-        for (pergunta in cidade.Saneamento) {
-          await Cidade.findOneAndUpdate(
+    for (cidade in energiaCO2) {
+        console.log(cidade)
+      for (ano in energiaCO2[cidade]) {
+          
+        for (pergunta in energiaCO2[cidade][ano]) {
+          /*await Cidade.findOneAndUpdate(
             { municipio_extenso: index }, {
             $push: {
               Saneamento:
@@ -28,7 +23,7 @@ async function atualizaSaneamentoResiduos() {
                 resposta: cidade.Saneamento[pergunta]
               }
             }
-          })
+          })*/
         }
         //Atualiza residuos
         for (pergunta in cidade["Resíduos"]) {

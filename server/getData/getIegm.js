@@ -19,7 +19,7 @@ module.exports = function getIegm() {
       bodyChunks.push(chunk);
     }).on('end', function () {
       var body = Buffer.concat(bodyChunks);
-      fs.writeFile("./iegmData", body, function (err) {
+      fs.writeFile("../database/iegmData", body, function (err) {
 
         if (err) {
           return console.log(err);

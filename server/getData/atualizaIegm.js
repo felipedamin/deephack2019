@@ -1,33 +1,33 @@
 const Cidade = require('../database/models/cidade');
 
-const iegm2014 = require('../database/iegm2014.json');
+const iegm2014 = require('../database/iegm/2014iegm.json');
+const iegm2015 = require('../database/iegm/2015iegm.json');
+const iegm2016 = require('../database/iegm/2016iegm.json');
+const iegm2017 = require('../database/iegm/2017iegm.json');
+const iegm2018 = require('../database/iegm/2018iegm.json');
 
 // Os municipios ja devem estar no BD com seus respectivos codigos
 // Se nao estiverem, chamar a atualizaMunicipios
 // é so acessar /database/municipios
 
-/*
-var query = { name: 'borne' };
-Model.findOneAndUpdate(query, { name: 'jason bourne' }, options, callback)
-*/
-
-const ANOS = [2014]
-const iegms = [iegm2014]
-const CODS_PERGUNTAS = ["M05Q00100", "M05Q00200", "M05Q00300", "M05Q00600", "M05Q00501", "M05Q00800", "M05Q00900"]
+const ANOS = [2014, 2015, 2016, 2017, 2018]
+const iegms = [iegm2014, iegm2015, iegm2016, iegm2017, iegm2018]
 
 async function atualizaIegm() {
   try {
     for (let iegmDoAno of iegms) {
-      for (let pergunta of CODS_PERGUNTAS) {
-        for (i in iegmDoAno[pergunta]) {
+      for (index in iegmDoAno.cod_ibge) {
+        let cod_ibge = iegmDoAno["cod_ibge"][index]
+        for (pergunta in iegmDoAno) {
+          if (pergunta !== "cod_ibge" && pergunta !== "Municipio")
           await Cidade.findOneAndUpdate(
-            { cod_ibge: i }, {
+            { cod_ibge: cod_ibge }, {
             $push: {
               iegm:
               {
                 ano: ANOS[iegms.indexOf(iegmDoAno)],
                 pergunta: pergunta,
-                resposta: iegmDoAno[pergunta][i]
+                resposta: iegmDoAno[pergunta][index]
               }
             }
           })

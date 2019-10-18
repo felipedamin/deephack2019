@@ -1,7 +1,7 @@
 const https = require('https');
 const fs = require('fs');
 
-module.exports = function getMunicipios() {
+function getMunicipios() {
   const options = {
     host: 'transparencia.tce.sp.gov.br',
     path: '/api/json/municipios'
@@ -18,7 +18,7 @@ module.exports = function getMunicipios() {
       bodyChunks.push(chunk);
     }).on('end', function () {
       var body = Buffer.concat(bodyChunks);
-      fs.writeFile("./server/database/municipios.json", body, function (err) {
+      fs.writeFile("../database/municipios.json", body, function (err) {
 
         if (err) {
           return console.log(err);
@@ -35,3 +35,5 @@ module.exports = function getMunicipios() {
     console.log('ERROR: ' + e.message);
   });
 }
+
+module.exports = getMunicipios

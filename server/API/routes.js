@@ -48,18 +48,4 @@ router.get('/municipio/:municipio', async (req, res) => {
   }
 });
 
-// rota para buscar IEGM do municipio
-router.get('/iegm/:ano/:municipio', async (req, res) => {
-  try {
-    const cidade = await Cidade.findOne({ ...req.params.municipio });
-    return res.send(cidade);
-  } catch (err) {
-    return res.status(400).send(err)
-  }
-});
-
-// rota para buscar saneamento do municipio
-
-// rota para buscar residuos do municipio
-
 module.exports = app => app.use('/database', router) // '/database' é o caminho para esse router

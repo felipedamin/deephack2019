@@ -32,7 +32,7 @@ export default class SearchBox extends React.Component {
     }
     this.searchList()
   }
-  
+
   async searchList() {
     try {
       let listaMunicipios = await getFromBD.getMunicipios()
@@ -44,16 +44,19 @@ export default class SearchBox extends React.Component {
   getSuggestions = value => {
     const inputValue = value.trim().toLowerCase();
     const inputLength = inputValue.length;
-
-    return inputLength < 3 ? [] : this.listaMunicipios.filter(cidades => {
-      const filtrada = cidades.toLowerCase().slice(0, inputLength) === inputValue
-      if (filtrada) {return cidades}
-    });
+    try {
+      return inputLength < 3 ? [] : this.listaMunicipios.filter(cidades => {
+        const filtrada = cidades.toLowerCase().slice(0, inputLength) === inputValue
+        if (filtrada) { return cidades }
+      });
+    } catch (err) {
+      return []
+    }
   };
 
   onChange = (event, { newValue, method }) => {
-    this.props.onChange(newValue, method!=='type')
-    if (method==='escape') {
+    this.props.onChange(newValue, method !== 'type')
+    if (method === 'escape') {
       this.props.onChange('', false)
     }
     /*this.setState({

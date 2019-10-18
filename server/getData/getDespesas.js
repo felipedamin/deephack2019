@@ -18,7 +18,7 @@ module.exports = function getDespesas(municipio, ano, mes) {
       bodyChunks.push(chunk);
     }).on('end', function () {
       var body = Buffer.concat(bodyChunks);
-      fs.writeFile(`${municipio}_${ano}_${mes}.json`, body, function (err) {
+      fs.writeFile(`../database/despesas/${municipio}_${ano}_${mes}.json`, body, function (err) {
 
         if (err) {
           return console.log(err);

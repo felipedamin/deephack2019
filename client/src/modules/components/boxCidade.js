@@ -7,15 +7,9 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
 import Grid from '@material-ui/core/Grid';
 
-//eslint-disable-next-line
-import { NavLink } from 'react-router-dom';
-
 import Graph from './graph'
 import { ODS12 } from '../../config/ods'
 import getFromBD from '../helpers/getFromBD'
-//eslint-disable-next-line
-import { Button } from '@material-ui/core';
-
 
 export class BoxCidade extends React.Component {
   constructor(props) {
@@ -56,11 +50,13 @@ export class BoxCidade extends React.Component {
                     <ExpansionPanelSummary margin='0.2em' >
                       <p style={{ color: '#ffffff', margin: '0.2em' }}>Meta {item.number}</p>
                     </ExpansionPanelSummary>
-                    <ExpansionPanelDetails style={{ backgroundColor: 'rgba(0, 0, 0, .1)', align: 'center' }}>
+                    <ExpansionPanelDetails style={{ backgroundColor: 'rgba(0, 0, 0, .1)', align: 'center', color: '#ffffff' }}>
                       <Grid column style={{ width: '100%' }}>
                         <h6>{item.texto}</h6>
-                        <Graph width='100%'></Graph>
-                        <p>{ this.state.saneamento ? this.state.saneamento[0].pergunta : ''}</p>
+                        <Graph width='100%' cidade={this.cidade} meta={ODS12[key]['number']}></Graph>
+                        <p>
+                        { this.state.saneamento ? this.state.saneamento[0].pergunta : ''}
+                        </p>
                         <div></div>
                       </Grid>
                     </ExpansionPanelDetails>

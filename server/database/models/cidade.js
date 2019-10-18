@@ -19,6 +19,11 @@ const CidadeSchema = new mongoose.Schema({
     pergunta: { type: String, required: true },
     resposta: { type: String, required: true }
   }],
+  Saneamento: [{
+    ano: Number,
+    pergunta: { type: String, required: true },
+    resposta: { type: String, required: true }
+  }],
   buff: Buffer
 });
 

@@ -1,23 +1,22 @@
 import * as React from 'react';
-
-import { BoxCidade } from '../components/boxCidade'
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Grid from '@material-ui/core/Grid';
+import Graph from '../components/graph';
 
 export default class Estado extends React.Component {
-  handleCheckbox = (event) => {
-    const checked = event.target.checked;
-    this.setState({ [event.target.value]: checked });
-  }
-
-  logState() {
-    console.log(this.state)
-  }
-
   render() {
     return (
       <div>
-        <BoxCidade
-          cidade={'Campinas'}
-        ></BoxCidade>
+        <Card style={{ margin: 20, backgroundColor: '#b21635', fontFamily: 'Raleway' }}>
+        <CardContent style={{ fontFamily: 'Raleway', fontSize: '1em' }}>
+          <p style={{ color: '#ffffff', fontSize: '1.3em', margin: '0.2em' }}>
+            Visão geral do Estado de São Paulo
+          </p>
+          <Graph />
+        </CardContent>
+      </Card>
       </div>
     )
   }
