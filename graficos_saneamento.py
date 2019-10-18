@@ -26,9 +26,9 @@ layout_consumo = go.Layout(title={'text':'Consumo médio per capita de água por
                            'font':{'family': "Times New Roman", "size": 30 },
                            'x': 0.5, 'y': 0.9},
                    yaxis={'title':'Consumo médio (l/hab./dia)'},
-                   xaxis={'title': 'Anos', 'tickmode': 'linear', 'dtick':1})
-                   #paper_bgcolor = '#ff7f0e'
-                   #colorway = ('#d62728','#1f77b4'))
+                   xaxis={'title': 'Anos', 'tickmode': 'linear', 'dtick':1},
+                       paper_bgcolor='rgba(0,0,0,0)',
+                       font = dict(color = '#ecf0f1'))
 
 fig1 = go.Figure(data = [consumo], layout = layout_consumo)
 #plot(fig1)
@@ -43,9 +43,9 @@ layout_saneamento = go.Layout(title={'text':'Taxa da população atendida em rel
                            'font':{'family': "Times New Roman", "size": 30 },
                            'x': 0.5, 'y': 0.9},
                    yaxis={'title':'Índice de atendimento total de água (%)'},
-                   xaxis={'title': 'Anos', 'tickmode': 'linear', 'dtick':1})
-                   #paper_bgcolor = '#ff7f0e'
-                   #colorway = ('#d62728','#1f77b4'))
+                   xaxis={'title': 'Anos', 'tickmode': 'linear', 'dtick':1},
+                       paper_bgcolor='rgba(0,0,0,0)',
+                       font = dict(color = '#ecf0f1'))
 
 fig2 = go.Figure(data = [saneamento], layout = layout_saneamento)
 #plot(fig2)

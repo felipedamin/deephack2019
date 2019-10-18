@@ -25,10 +25,10 @@ layout_rdo = go.Layout(title={'text': 'Taxa de cobertura de coleta de resíduos 
                            'font':{'family': "Times New Roman", "size": 30 },
                            'x': 0.5, 'y': 0.9}, 
                    yaxis={'title':'População atendida/População total (%)'},
-                   xaxis={'title': 'Anos', 'tickmode': 'linear', 'dtick':1})
-                   #paper_bgcolor = '#ff7f0e'
-                   #colorway = ('#d62728','#1f77b4'))
-
+                   xaxis={'title': 'Anos', 'tickmode': 'linear', 'dtick':1},
+                       paper_bgcolor='rgba(0,0,0,0)',
+                       font = dict(color = '#ecf0f1'))
+                                   
 fig1 = go.Figure(data = [tx_rdo], layout = layout_rdo)
 #plot(fig1)
 
@@ -42,9 +42,9 @@ layout_coletada = go.Layout(title={'text': 'Massa coletada de resíduos domésti
                            'font':{'family': "Times New Roman", "size": 25 },
                            'x': 0.5, 'y': 0.9},
                    yaxis={'title':'Quantidade total recolhida/ População urbana (kg/hab./dia)'},
-                   xaxis={'title': 'Anos', 'tickmode': 'linear', 'dtick':1})
-                   #paper_bgcolor = '#ff7f0e'
-                   #colorway = ('#d62728','#1f77b4'))
+                   xaxis={'title': 'Anos', 'tickmode': 'linear', 'dtick':1},
+                       paper_bgcolor='rgba(0,0,0,0)',
+                       font = dict(color = '#ecf0f1'))
 
 fig2 = go.Figure(data = [m_coletada], layout = layout_coletada)
 #plot(fig2)
@@ -60,10 +60,9 @@ layout_recup = go.Layout(title={'text': 'Taxa de recuperação de materiais reci
                            'font':{'family': "Times New Roman", "size": 25 },
                            'x': 0.5, 'y': 0.9}, 
                    yaxis={'title':'Quantidade de recicláveis recuperados/Quantidade total (%)'},
-                   xaxis={'title': 'Anos', 'tickmode': 'linear', 'dtick':1})
-                   #paper_bgcolor = '#ff7f0e'
-                   #colorway = ('#d62728','#1f77b4'))
-
+                   xaxis={'title': 'Anos', 'tickmode': 'linear', 'dtick':1},
+                       paper_bgcolor='rgba(0,0,0,0)',
+                       font = dict(color = '#ecf0f1'))
 fig3 = go.Figure(data = [tx_recup], layout = layout_recup)
 #plot(fig3)
 
@@ -77,9 +76,10 @@ layout_selet = go.Layout(title={'text': 'Massa per capita recolhida via coleta s
                            'font':{'family': "Times New Roman", "size": 30 },
                            'x': 0.5, 'y': 0.9},
                    yaxis={'title':'Quantidade de recicláveis recolhidos/ Pop urbana (Kg/hab./ano)'},
-                   xaxis={'title': 'Anos', 'tickmode': 'linear', 'dtick':1})
-                   #paper_bgcolor = '#ff7f0e'
-                   #colorway = ('#d62728','#1f77b4'))
+                   xaxis={'title': 'Anos', 'tickmode': 'linear', 'dtick':1}, #'color' :'#ecf0f1'},
+                       paper_bgcolor='rgba(0,0,0,0)',
+                       font = dict(color = '#ecf0f1'),
+                       )
 
 fig4 = go.Figure(data = [m_seletiva], layout = layout_selet)
 #plot(fig4)
@@ -92,12 +92,17 @@ tx_pop_aten_y = [data_2015.loc['Cotia', 'Resíduos']['Taxa pop atendida com cole
 tx_pop = go.Scatter(x = anos, y = tx_pop_aten_y, mode = 'lines+markers')
 
 layout_pop = go.Layout(title={'text': 'Taxa da população beneficiado pelo serviço de coleta de resíduos domiciliares em Cotia', 
-                           'font':{'family': "Times New Roman", "size": 30 },
+                           'font':{'family': "Times New Roman", "size": 30,
+                                   'color': '#ecf0f1'},
                            'x': 0.5, 'y': 0.9},
-                   yaxis={'title':'População atendida/ População total (%)'},
-                   xaxis={'title': 'Anos', 'tickmode': 'linear', 'dtick':1})
-                   #paper_bgcolor = '#ff7f0e'
-                   #colorway = ('#d62728','#1f77b4'))
+                   yaxis={'title':'População atendida/ População total (%)',
+                          #'color': '#ecf0f1'
+                          },
+                          
+                   xaxis={'title': 'Anos', 'tickmode': 'linear', 'dtick':1}, #'color' :'#ecf0f1'},
+                       paper_bgcolor='rgba(0,0,0,0)',
+                       font = dict(color = '#ecf0f1'),
+                       )
 
 fig5 = go.Figure(data = [tx_pop], layout = layout_pop)
 #plot(fig5)
