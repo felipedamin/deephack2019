@@ -18,7 +18,8 @@ export class BoxCidade extends React.Component {
     this.state = {
       iegm: '',
       saneamento: '',
-      residuos: ''
+      residuos: '',
+      iegmFoiTratado: false
     }
     this.getDadosMunicipio(this.cidade)
   }
@@ -28,8 +29,26 @@ export class BoxCidade extends React.Component {
     let iegm = dados.iegm
     let saneamento = dados.saneamento
     let residuos = dados.residuos
-    
+
+    this.treatIegm(iegm)
     this.setState({ iegm, saneamento, residuos })
+  }
+
+  async treatIegm(iegm) {
+    this.iegmTratado = {}
+
+    try {
+      for (let i in iegm) {
+        let pergunta = iegm[i]['pergunta']
+        if (this.iegmTratado[pergunta] === undefined) {
+          this.iegmTratado[pergunta] = {}
+        }
+        this.iegmTratado[pergunta][iegm[i]['ano']] = iegm[i]['resposta']  
+      }
+      this.setState({ iegmFoiTratado: true })
+    } catch(err) {
+      console.log(err)
+    }
   }
 
   render() {
@@ -43,7 +62,7 @@ export class BoxCidade extends React.Component {
         </CardContent>
         <CardActions>
           <Grid column style={{ width: '100%' }}>
-            {
+            { this.state.iegmFoiTratado &&
               ODS12.map((item, key) => {
                 return (
                   <ExpansionPanel style={{ backgroundColor: 'rgba(0, 0, 0, 0.0)', alignItems: "center", border: '1px solid rgba(0, 0, 0, .125)', width: '98%', marginLeft: '1%' }}>
@@ -53,10 +72,7 @@ export class BoxCidade extends React.Component {
                     <ExpansionPanelDetails style={{ backgroundColor: 'rgba(0, 0, 0, .1)', align: 'center', color: '#ffffff' }}>
                       <Grid column style={{ width: '100%' }}>
                         <h6>{item.texto}</h6>
-                        <Graph width='100%' cidade={this.cidade} meta={ODS12[key]['number']}></Graph>
-                        <p>
-                        { this.state.saneamento ? this.state.saneamento[0].pergunta : ''}
-                        </p>
+                        <Graph width='100%' iegm={this.iegmTratado} cidade={this.cidade} meta={ODS12[key]['number']}></Graph>
                         <div></div>
                       </Grid>
                     </ExpansionPanelDetails>

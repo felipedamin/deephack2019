@@ -1,8 +1,7 @@
 import * as React from 'react';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Grid from '@material-ui/core/Grid';
+// import Grid from '@material-ui/core/Grid';
 import Graph from '../components/graph';
 
 export default class Estado extends React.Component {

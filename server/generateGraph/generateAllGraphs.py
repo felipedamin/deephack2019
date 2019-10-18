@@ -20,4 +20,4 @@ for i in range(len(municipios)):
         print('error')
         erros += 1
 
-print('Geramos graficos para '+gerados+' cidades! Outras '+erros+' deram erro.')
+print('Geramos graficos para '+str(gerados)+' cidades! Outras '+str(erros)+' deram erro.')

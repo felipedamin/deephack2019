@@ -10,7 +10,7 @@ from plotly.offline import plot
 import plotly.graph_objs as go
 import numpy as np
 
-df = pd.read_json("C:/Users/icaro/Desktop/Hackaton/Dados tratados/Energia/energia_co2.json", orient = 'index')
+df = pd.read_json("./server/database/energia_co2.json", orient = 'index')
 
 tipos = ['Petróleo e derivados - t/m3', 'Biomassa e derivados - TON',
  'Rede pública','Petróleo e derivados - TON', 'Gás Natural (Seco)',

@@ -10,13 +10,11 @@ from plotly.offline import plot
 import plotly.graph_objs as go
 import numpy as np
 
-df_2017 = pd.read_json("C:/Users/icaro/Desktop/Hackaton/Dados tratados/Json/2017.json", orient = 'index')
-df_2016 = pd.read_json("C:/Users/icaro/Desktop/Hackaton/Dados tratados/Json/2016.json", orient = 'index')
-df_2015 = pd.read_json("C:/Users/icaro/Desktop/Hackaton/Dados tratados/Json/2015.json", orient = 'index')
+df_2017 = pd.read_json("./server/database/saneamentoResiduos/2017.json", orient = 'index')
+df_2016 = pd.read_json("./server/database/saneamentoResiduos/2016.json", orient = 'index')
+df_2015 = pd.read_json("./server/database/saneamentoResiduos/2015.json", orient = 'index')
 
 anos = [2015,2016,2017]
-
-print(df_2017.loc['Adamantina', 'Resíduos'])
 
 #Gráfico Donut mostrando porcentagem de nan sobre o total em 2017
 len_2017 = len(df_2017['Resíduos'])
@@ -387,16 +385,16 @@ fig10 = go.Figure(data = [saneamento], layout = layout_saneamento)
 #plot(fig10)
 
 
-fig1.write_image("C:/Users/icaro/Desktop/Hackaton/Dados tratados/Json/donut_2017.png", width = 1500, height = 700, scale = 2)
-fig2.write_image("C:/Users/icaro/Desktop/Hackaton/Dados tratados/Json/donut_2016.png", width = 1500, height = 700, scale = 2)
-fig3.write_image("C:/Users/icaro/Desktop/Hackaton/Dados tratados/Json/donut_2015.png", width = 1000, height = 700, scale = 2)
-fig4.write_image("C:/Users/icaro/Desktop/Hackaton/Dados tratados/Json/coleta_rdo_sp.png", width = 1500, height = 700, scale = 2)
-fig5.write_image("C:/Users/icaro/Desktop/Hackaton/Dados tratados/Json/massa_coletada_sp.png", width = 1500, height = 700, scale = 2)
-fig6.write_image("C:/Users/icaro/Desktop/Hackaton/Dados tratados/Json/recup_reciclaveis_sp.png", width = 1000, height = 700, scale = 2)
-fig7.write_image("C:/Users/icaro/Desktop/Hackaton/Dados tratados/Json/massa_via_seletiva_sp.png", width = 1500, height = 700, scale = 2)
-fig8.write_image("C:/Users/icaro/Desktop/Hackaton/Dados tratados/Json/pop_beneficiada_sp.png", width = 1500, height = 700, scale = 2)
-fig9.write_image("C:/Users/icaro/Desktop/Hackaton/Dados tratados/Json/consumo_medio_sp.png", width = 1500, height = 700, scale = 2)
-fig10.write_image("C:/Users/icaro/Desktop/Hackaton/Dados tratados/Json/taxa_pop_atendida_sp.png", width = 1500, height = 700, scale = 2)
+fig1.write_image("./client/src/graphs/estado/donut_2017.png", width = 1500, height = 700, scale = 2)
+fig2.write_image("./client/src/graphs/estado/donut_2016.png", width = 1500, height = 700, scale = 2)
+fig3.write_image("./client/src/graphs/estado/donut_2015.png", width = 1000, height = 700, scale = 2)
+fig4.write_image("./client/src/graphs/estado/coleta_rdo_sp.png", width = 1500, height = 700, scale = 2)
+fig5.write_image("./client/src/graphs/estado/massa_coletada_sp.png", width = 1500, height = 700, scale = 2)
+fig6.write_image("./client/src/graphs/estado/recup_reciclaveis_sp.png", width = 1000, height = 700, scale = 2)
+fig7.write_image("./client/src/graphs/estado/massa_via_seletiva_sp.png", width = 1500, height = 700, scale = 2)
+fig8.write_image("./client/src/graphs/estado/pop_beneficiada_sp.png", width = 1500, height = 700, scale = 2)
+fig9.write_image("./client/src/graphs/estado/consumo_medio_sp.png", width = 1500, height = 700, scale = 2)
+fig10.write_image("./client/src/graphs/estado/taxa_pop_atendida_sp.png", width = 1500, height = 700, scale = 2)
 
 
         

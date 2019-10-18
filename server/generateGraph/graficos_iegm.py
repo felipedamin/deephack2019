@@ -63,8 +63,6 @@ def newGraficoIegm():
     layout1 = go.Layout(title={'text':'Iegm - Estruturais', 
                             'font':{'family': "Times New Roman", "size": 40 },
                             'x': 0.5, 'y': 0.9},
-                            paper_bgcolor='rgba(0,0,0,0)',
-                            font = dict(color = '#ecf0f1'),
                         legend=dict(
                                 x=0,
                                 y=-0.3,
@@ -122,8 +120,6 @@ def newGraficoIegm():
     layout2 = go.Layout(title={'text':'Iegm - Resíduos', 
                             'font':{'family': "Times New Roman", "size": 40 },
                             'x': 0.5, 'y': 1},
-                            paper_bgcolor='rgba(0,0,0,0)',
-                       font = dict(color = '#ecf0f1'),
                         legend=dict(x = 0.04, y= 1,
                                 traceorder="normal",
                                 font=dict(
@@ -152,8 +148,6 @@ def newGraficoIegm():
     layout3 = go.Layout(title={'text':'Existe licença de operação da CETESB para a área de aterro?', 
                             'font':{'family': "Times New Roman", "size": 20 },
                             'x': 0.5, 'y': 0.9},
-                            paper_bgcolor='rgba(0,0,0,0)',
-                       font = dict(color = '#ecf0f1'),
                         legend=dict(x = 0, y= 0,
                                 traceorder="normal",
                                 font=dict(
@@ -201,8 +195,6 @@ def newGraficoIegm():
     layout4 = go.Layout(title={'text':'Iegm - Educação', 
                             'font':{'family': "Times New Roman", "size": 40 },
                             'x': 0.5, 'y': 0.9},
-                            paper_bgcolor='rgba(0,0,0,0)',
-                       font = dict(color = '#ecf0f1'),
                         legend=dict(x = 0, y = -0.2,
                                 traceorder="normal",
                                 font=dict(
