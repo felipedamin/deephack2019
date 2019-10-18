@@ -10,7 +10,7 @@
 # Instruções para iniciar pela primeira vez:
 Esta etapa pode demorar \
 1 - Execute o *mongodb*. Basta digitar mongod no terminal. \
-2 - Agora precisaremos suprir o banco de dados, os arquivos json disponiveis no repositório serão suficientes para isso. Também é possível utilizar os códigos de busca em APIs que estão em server/API, mas por nem todas as fontes que usamos terem APIs, aconselho a opção dos json's. \
+2 - Agora precisaremos suprir o banco de dados, os arquivos json disponiveis no repositório serão suficientes para isso. Também é possível utilizar os códigos de busca em APIs que estão em server/API, pelo fato de nem todas as fontes que usamos terem APIs, aconselho a opção dos json's. \
   2a - na pasta server/getData, execute *"node atualizar.js"*. Aguarde terminar (será exibido "Fim" no terminal)\
 3 - Precisamos gerar os graficos \
   3a - Pretendemos ter os gráficos já prontos no backend, assim ao solicitar as informações de uma cidade não é necessário que eles sejam feitos na hora, o que diminui o tempo de espera do usuário. \
